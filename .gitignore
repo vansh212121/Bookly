@@ -1,0 +1,47 @@
+# --- Secrets ---
+# This is the most important rule. Never commit your environment variables.
+.env
+
+# --- Python ---
+# Ignore the virtual environment folder.
+venv/
+env/
+.venv/
+
+# Ignore Python cache files and folders.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- IDE / Editor ---
+# Ignore Visual Studio Code settings.
+.vscode/
+
+# Ignore PyCharm settings.
+.idea/
+
+# --- Testing ---
+# Ignore pytest cache and coverage reports.
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ignore test database files if you use a file-based SQLite DB.
+test.db
+test.db-journal
+
+# Ignore the entire tests folder and pytest configuration.
+tests/
+pytest.ini
+
+# --- Operating System ---
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore Windows specific files
+Thumbs.db
+
+# --- Celery ---
+# Ignore Celery-related pidfiles.
+*.pid
