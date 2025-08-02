@@ -2,9 +2,7 @@ from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional
 from datetime import datetime
 from app.models.user_model import UserRole
-# ===================================================================
-# This is the data the API receives.
-# ===================================================================
+
 
 class UserCreate(BaseModel):
     """
@@ -13,7 +11,7 @@ class UserCreate(BaseModel):
     """
     name: str
     email: EmailStr
-    password: str # CRITICAL: Receive plain password, hash it in the service layer.
+    password: str 
 
 class UserUpdate(BaseModel):
     """
@@ -24,7 +22,7 @@ class UserUpdate(BaseModel):
     email: Optional[EmailStr] = None
 
 # ===================================================================
-# This is the data the API sends back.
+# Body schemas for user-related operations
 # ===================================================================
 
 class UserResponse(BaseModel):
@@ -38,7 +36,6 @@ class UserResponse(BaseModel):
     created_at: datetime
 
     class Config:
-        # This allows the model to be created from ORM objects (e.g., the User model).
         from_attributes = True
         
         

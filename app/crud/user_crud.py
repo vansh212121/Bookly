@@ -18,8 +18,7 @@ async def create_user(user: User, db: AsyncSession) -> User:
     Creates a new user object in the database.
     This function now correctly expects a complete User model object.
     """
-    # The user object is already created and validated in the service layer.
-    # We just need to add it to the database.
+
     db.add(user)
     await db.commit()
     await db.refresh(user)
@@ -74,7 +73,6 @@ async def get_user_with_reviews(db: AsyncSession, user_id: int) -> Optional[User
     statement = select(User).where(User.id == user_id)
 
     # 2. Add an option to "eagerly load" the 'reviews' relationship.
-    #    'selectinload' is the most efficient strategy for one-to-many relationships.
     statement = statement.options(selectinload(User.reviews))
 
     # 3. Execute the query.

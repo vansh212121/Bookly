@@ -16,7 +16,7 @@ async def get_all_books(db: AsyncSession) -> List[Book]:
 
 async def get_book_by_id(book_id: int, db: AsyncSession) -> Optional[Book]:
     """Retrieves a single book by its primary key using the most direct method."""
-    # db.get() is the most efficient way to fetch an object by its primary key.
+
     statement = select(Book).where(Book.id == book_id).options(selectinload(Book.tags))
     result = await db.execute(statement)
     return result.scalar_one_or_none()
@@ -28,8 +28,7 @@ async def create_book(book: Book, db: AsyncSession) -> Book:
     """
     db.add(book)
     await db.commit()
-    # After committing, the 'book' object is expired. We need to get it again.
-    # We use our helper function to get the newly created book with its tags.
+
     new_book = await get_book_by_id(db=db, book_id=book.id)
     return new_book
 
@@ -47,7 +46,7 @@ async def update_book(
 
     db.add(book_to_update)
     await db.commit()
-    # We use our fixed helper function to get the updated book with its tags.
+
     updated_book = await get_book_by_id(db=db, book_id=book_to_update.id)
     return updated_book
 

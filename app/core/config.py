@@ -22,7 +22,6 @@ class Settings(BaseSettings):
     CELERY_BROKER_URL: str
     CELERY_RESULT_BACKEND: str
     
-    # This is a good production setting for Celery.
     CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP: bool = True
     
 

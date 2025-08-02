@@ -22,7 +22,6 @@ def _send_email_sync(email_to: str, subject: str, html_content: str):
 
     try:
         # Connect to the SMTP server with a timeout to prevent hanging.
-        # The `with` statement ensures the connection is automatically and safely closed.
         with smtplib.SMTP(settings.MAIL_SERVER, 587, timeout=15) as server:
             server.starttls()  # Upgrade the connection to a secure (encrypted) one
             server.login(settings.MAIL_USERNAME, settings.MAIL_PASSWORD)
@@ -36,7 +35,6 @@ def _send_email_sync(email_to: str, subject: str, html_content: str):
 
 def send_verification_email_sync(email_to: str, token: str):
     """Builds and sends the verification email synchronously."""
-    # This URL should point to your frontend application in a real-world scenario.
     verification_url = f"http://localhost:8000/verify-email?token={token}"
     html_content = f"""
     <html>
@@ -52,7 +50,6 @@ def send_verification_email_sync(email_to: str, token: str):
 
 def send_password_reset_email_sync(email_to: str, token: str):
     """Builds and sends the password reset email synchronously."""
-    # This URL should point to your frontend application's password reset page.
     reset_url = f"http://localhost:8000/reset-password?token={token}"
     html_content = f"""
     <html>

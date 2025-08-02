@@ -8,7 +8,7 @@ celery_app = Celery(
     "tasks",
     broker=settings.REDIS_URL,
     backend=settings.REDIS_URL,
-    # This is a good production setting for reliability.
+
     broker_connection_retry_on_startup=True
 )
 
@@ -23,6 +23,4 @@ celery_app.conf.update(
 )
 
 # 3. Auto-discover tasks.
-#    This line tells Celery to look for task definitions in a file
-#    named `celery_tasks.py` inside our `app` directory.
 celery_app.autodiscover_tasks(["app"])

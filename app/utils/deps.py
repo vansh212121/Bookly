@@ -73,6 +73,7 @@ class RoleChecker:
     A dependency class that checks if the current user has one of the
     allowed roles.
     """
+
     def __init__(self, allowed_roles: List[UserRole]):
         self.allowed_roles = allowed_roles
 
@@ -83,7 +84,3 @@ class RoleChecker:
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="The user doesn't have enough privileges",
             )
-
-
-
-

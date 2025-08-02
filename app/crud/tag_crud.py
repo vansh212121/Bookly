@@ -25,7 +25,7 @@ async def get_all_tags(db: AsyncSession) -> List[Tag]:
 
 async def create_tag(tag_data: TagCreate, db: AsyncSession) -> Tag:
     """Creates a new tag."""
-    # We can use model_validate here as the schema and model are simple
+
     new_tag = Tag.model_validate(tag_data)
     db.add(new_tag)
     await db.commit()
