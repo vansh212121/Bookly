@@ -62,8 +62,8 @@ To run this project locally, you will need Python 3.10+, Docker, and Docker Comp
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
-    cd your-repository-name
+    git clone https://github.com/vansh212121/Bookly.git
+    cd Bookly
     ```
 
 2.  **Create and configure the environment file:**
